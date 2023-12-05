@@ -1,7 +1,9 @@
+import { removeButtonHandler } from "./eventController.js";
+
 function showTodoItem(newId, newDescription) {
   let container = document.createElement("div");
   container.classList.add("todoItem");
-  container.id = newId;
+  container.id = `todo-${newId}`
   let description = document.createElement("p");
   description.textContent = newDescription;
   container.appendChild(description);
@@ -10,7 +12,11 @@ function showTodoItem(newId, newDescription) {
   container.appendChild(buttonState);
   let remove = document.createElement("button");
   remove.textContent = "remove";
+  remove.addEventListener('click',(e)=>{
+    removeButtonHandler(newId)
+  })
   container.appendChild(remove)
+  
   document.getElementById("listTodo").appendChild(container);
 }
 
@@ -26,7 +32,7 @@ function showNumberOfNotDone(numberOfNotDone) {
 }
 
 function removeTodoItem(removeId) {
-  let removeDiv = document.querySelector(`#listTodo > #${removeId}`);
+  let removeDiv = document.querySelector(`#listTodo > #todo-${removeId}`);
   removeDiv.remove();
 }
 

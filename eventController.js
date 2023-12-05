@@ -3,12 +3,13 @@ import {
   findIndexTodo,
   findTodo,
   getNumberOfDone,
-  getNumberOfNotDone,
+  getNumberOfNotDone,removeTodo
 } from "./lib/todoManagement.js";
 import {
   showTodoItem,
   showNumberOfNotDone,
   showNumberOfDone,
+  removeTodoItem,
 } from "./todoListUI.js";
 
 function addTodoHandler() {
@@ -30,10 +31,12 @@ function addTodoHandler() {
 function notDoneButtonHandler(){
 
 }
-function removeButtonHandler(){
+function removeButtonHandler(removeId){
+    removeTodoItem(removeId)
+    removeTodo(removeId)
 
 }
 
 export {
-    addTodoHandler
+    addTodoHandler,removeButtonHandler
 }
