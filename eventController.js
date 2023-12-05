@@ -30,10 +30,13 @@ function addTodoHandler() {
 
 function notDoneButtonHandler(){
 
+
 }
 function removeButtonHandler(removeId){
     removeTodoItem(removeId)
     removeTodo(removeId)
+    showNumberOfDone(getNumberOfDone())
+    showNumberOfNotDone(getNumberOfNotDone())
 
 }
 
