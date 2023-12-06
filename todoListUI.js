@@ -1,4 +1,4 @@
-import { removeButtonHandler } from "./eventController.js";
+import { notDoneButtonHandler, removeButtonHandler } from "./eventController.js";
 
 function showTodoItem(newId, newDescription) {
   let container = document.createElement("div");
@@ -9,6 +9,9 @@ function showTodoItem(newId, newDescription) {
   container.appendChild(description);
   let buttonState = document.createElement("button");
   buttonState.textContent = "Not Done";
+  buttonState.addEventListener('click',(e)=>{
+    notDoneButtonHandler(newId)
+  })
   container.appendChild(buttonState);
   let remove = document.createElement("button");
   remove.textContent = "remove";
