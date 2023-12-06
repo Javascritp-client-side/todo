@@ -4,8 +4,10 @@ import {
   findTodo,
   getNumberOfDone,
   getNumberOfNotDone,
+  loadTodos,
   removeTodo,
   setItemToDone,
+  todos,
 } from "./lib/todoManagement.js";
 import {
   showTodoItem,
@@ -49,4 +51,30 @@ function removeButtonHandler(removeId) {
   showNumberOfNotDone(getNumberOfNotDone());
 }
 
-export { addTodoHandler, removeButtonHandler, notDoneButtonHandler };
+function loadHandler() {
+    window.addEventListener('load',(e)=>{
+      let data = localStorage.getItem('todos')
+
+      loadTodos(JSON.parse(data))
+      console.log('Doing');
+      showNumberOfDone(getNumberOfDone());
+      showNumberOfNotDone(getNumberOfNotDone());
+    })
+ 
+ 
+  }
+
+
+function beforeUnloadHandler(){
+  window.addEventListener('beforeunload',(e)=>{
+    e.preventDefault()
+    let convert = JSON.stringify(todos)
+    localStorage.setItem('todos',convert)
+    // let empty = []
+    // loadTodos(empty)
+  })
+  
+    
+}
+
+export { addTodoHandler, removeButtonHandler, notDoneButtonHandler,beforeUnloadHandler,loadHandler };
